@@ -250,7 +250,7 @@ function stringSmash(strings) {
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
 function getFullNames(runners) {
-  let names = runners.map((v, i) => `${v.last_name}, ${v.first_name}`);
+  let names = runners.map((v) => `${v.last_name}, ${v.first_name}`);
 
   return names;
 }
@@ -267,8 +267,8 @@ function getFullNames(runners) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
-function firstNamesAllCaps(/* CODE HERE */) {
-  /* CODE HERE */
+function firstNamesAllCaps(runners) {
+  return runners.map((v) => v.first_name.toUpperCase());
 }
 
 /**
@@ -285,8 +285,8 @@ function firstNamesAllCaps(/* CODE HERE */) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
-  /* CODE HERE */
+function getRunnersByTShirtSize(runners, tShirtSize) {
+  return runners.filter(v => v.shirt_size === tShirtSize);
 }
 
 /**
@@ -300,8 +300,10 @@ function getRunnersByTShirtSize(/* CODE HERE */) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(/* CODE HERE */) {
-  /* CODE HERE */
+function tallyUpDonations(runners) {
+  return runners.reduce(function(total, curr) {
+    return total + curr.donation;
+  }, 0);
 }
 
 /////////////// CLOSURES ///////////////
@@ -314,11 +316,11 @@ function tallyUpDonations(/* CODE HERE */) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
- * 
+ * counter1 is assigned a function as value. And counter2 is a function declaration.
  * 2. Which of the two uses a closure? How can you tell?
- * 
+ * counter1 uses a closure because it returns another function.
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ * When you want to assign the return of a function counter1 is the best option. When you just a variable and want to perform a simple function, counter2 is the best option.
 */
 
 // counter1 code
