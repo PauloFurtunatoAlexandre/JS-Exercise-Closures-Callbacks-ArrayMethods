@@ -361,17 +361,17 @@ function counter2() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(counterLimit) {
+function counterMakerWithLimit(max) {
+  let count = 0;
   
-  return function counter() {
-    let count = 0;
+  return function counterMaker() {
     do {
-      count++;
-      if(count === counterLimit) {
+
+      if(count > max) {
         count = 0;
       }
-    } 
-    while (count < counterLimit);
+      return count++;
+    } while (count < max);
   }
 }
 
